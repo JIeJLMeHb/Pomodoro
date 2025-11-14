@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const statusText = document.getElementById('status-text');
     const progressRing = document.querySelector('.progress-ring-fill');
     
-    // Task elements
     const taskInput = document.getElementById('task-input');
     const addTaskBtn = document.getElementById('add-task-btn');
     const tasksList = document.getElementById('tasks-list');
@@ -16,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const clearCompletedBtn = document.getElementById('clear-completed-btn');
     
     const settings = {
-        pomodoro: 25 * 60,
+        pomodoro: 0.5 * 60,
         'short-break': 5 * 60,
         'long-break': 15 * 60
     };
@@ -28,12 +27,10 @@ document.addEventListener('DOMContentLoaded', function() {
     let totalTime = settings[currentMode];
     let tasks = JSON.parse(localStorage.getItem('pomodoroTasks')) || [];
     
-    // Initialize
     updateDisplay();
     renderTasks();
     updateTasksCounter();
 
-    // Timer event listeners
     startBtn.addEventListener('click', startTimer);
     pauseBtn.addEventListener('click', pauseTimer);
     resetBtn.addEventListener('click', resetTimer);
@@ -44,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Task event listeners
     addTaskBtn.addEventListener('click', addTask);
     taskInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
@@ -175,19 +171,6 @@ document.addEventListener('DOMContentLoaded', function() {
         startBtn.disabled = false;
         pauseBtn.disabled = true;
         
-        anime.timeline({
-            targets: '.timer-text',
-            easing: 'easeOutExpo'
-        })
-        .add({
-            scale: [1, 1.2],
-            duration: 300
-        })
-        .add({
-            scale: [1.2, 1],
-            duration: 300
-        });
-        
         anime({
             targets: '.progress-ring-fill',
             stroke: ['#e94560', '#4cd137', '#e94560'],
@@ -204,13 +187,11 @@ document.addEventListener('DOMContentLoaded', function() {
             easing: 'easeOutExpo'
         });
         
-        // Auto-complete current task when pomodoro finishes
         if (currentMode === 'pomodoro') {
             completeCurrentTask();
         }
     }
     
-    // Task Management Functions
     function addTask() {
         const text = taskInput.value.trim();
         if (text === '') return;
