@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Pomodoro Timer</h1>
+        
+        <div class="main-content">
+            <div class="timer-section">
+                <div class="timer-display">
+                    <div class="timer-circle">
+                        <svg class="progress-ring" width="300" height="300">
+                            <circle class="progress-ring-bg" cx="150" cy="150" r="140" stroke-width="8"></circle>
+                            <circle class="progress-ring-fill" cx="150" cy="150" r="140" stroke-width="8" 
+                                    stroke-dasharray="879.2" stroke-dashoffset="879.2"></circle>
+                        </svg>
+                        <div class="timer-text">
+                            <span id="minutes">25</span>:<span id="seconds">00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    <button id="start-btn" class="btn btn-primary">Start</button>
+                    <button id="pause-btn" class="btn btn-secondary">Pause</button>
+                    <button id="reset-btn" class="btn btn-secondary">Reset</button>
+                </div>
+                
+                <div class="mode-selector">
+                    <button class="mode-btn active" data-mode="pomodoro">Pomodoro</button>
+                    <button class="mode-btn" data-mode="short-break">Short Break</button>
+                    <button class="mode-btn" data-mode="long-break">Long Break</button>
+                </div>
+                
+                <div class="status">
+                    <p id="status-text">Ready to focus</p>
+                </div>
+            </div>
+
+            <div class="tasks-section">
+                <div class="tasks-header">
+                    <h2>Tasks</h2>
+                    <span id="tasks-counter">0 tasks</span>
+                </div>
+                
+                <div class="task-input-container">
+                    <input type="text" id="task-input" placeholder="Add a new task...">
+                    <button id="add-task-btn" class="btn btn-primary">Add</button>
+                </div>
+                
+                <div class="tasks-list" id="tasks-list">
+                    <!-- Tasks will be added here dynamically -->
+                </div>
+                
+                <div class="tasks-footer">
+                    <button id="clear-completed-btn" class="btn btn-secondary">Clear Completed</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
