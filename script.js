@@ -211,7 +211,6 @@ document.addEventListener('DOMContentLoaded', function() {
         taskInput.value = '';
         taskInput.focus();
         
-        // Animation for new task
         const newTaskElement = tasksList.firstChild;
         if (newTaskElement) {
             anime({
@@ -244,7 +243,6 @@ document.addEventListener('DOMContentLoaded', function() {
             tasksList.appendChild(taskElement);
         });
         
-        // Add event listeners to task elements
         document.querySelectorAll('.task-checkbox').forEach(checkbox => {
             checkbox.addEventListener('click', toggleTask);
         });
@@ -264,7 +262,6 @@ document.addEventListener('DOMContentLoaded', function() {
             renderTasks();
             updateTasksCounter();
             
-            // Animation
             anime({
                 targets: e.target,
                 scale: [1, 1.2, 1],
@@ -281,7 +278,6 @@ document.addEventListener('DOMContentLoaded', function() {
         renderTasks();
         updateTasksCounter();
         
-        // Animation
         anime({
             targets: e.target.closest('.task-item'),
             opacity: [1, 0],
@@ -304,7 +300,6 @@ document.addEventListener('DOMContentLoaded', function() {
         renderTasks();
         updateTasksCounter();
         
-        // Animation
         anime({
             targets: clearCompletedBtn,
             scale: [1, 1.1, 1],
@@ -314,7 +309,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function completeCurrentTask() {
-        // Find the first incomplete task and mark it as completed
         const incompleteTask = tasks.find(task => !task.completed);
         if (incompleteTask) {
             incompleteTask.completed = true;
@@ -342,7 +336,6 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('pomodoroTasks', JSON.stringify(tasks));
     }
     
-    // Initial animations
     anime({
         targets: '.title',
         translateY: [-50, 0],
